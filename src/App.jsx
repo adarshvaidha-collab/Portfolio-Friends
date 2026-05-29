@@ -3,7 +3,14 @@ import { createClient } from "@supabase/supabase-js";
 
 const SUPABASE_URL = "https://ckaprfsaaivcreswgppr.supabase.co";
 const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNrYXByZnNhYWl2Y3Jlc3dncHByIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk5NzA2MzMsImV4cCI6MjA5NTU0NjYzM30._qrFkoM6-CQBOH9KgFSa7NxuPncRtISKC09-iNWKD44";
-const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY, {
+  auth: {
+    persistSession: true,
+    autoRefreshToken: true,
+    detectSessionInUrl: true,
+    storage: window.localStorage,
+  }
+});
 const FINNHUB = "d0r9h1pr01qgdatuj9agd0r9h1pr01qgdatuj9b0";
 
 // -- DESIGN: DEEP SPACE PREMIUM --------------------------------
